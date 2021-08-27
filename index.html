@@ -7,10 +7,38 @@
     <title >chrome easter egg: t-rex runner</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link rel="manifest" href="manifest.json">
     <script src="index.js"></script>
 </head>
 
 <body id="t" class="offline">
+    <script>
+        // 判断浏览器是否支持 service worker
+        if ('serviceWorker' in navigator) {
+            // load 事件完成之后才注册 service worker
+            window.addEventListener('load', function () {
+                // 注册 sw.js
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function (registration) {
+                        // 注册成功
+                        console.log('sw.js 注册成功', registration.scope);
+                    })
+                    .catch(function (err) {
+                        // 注册失败:(
+                        console.log('sw.js 注册失败 ', err);
+                    });
+            });
+        }
+    </script>
+<script>
+  // 检测浏览器是否支持SW
+  if(navigator.serviceWorker != null){
+    navigator.serviceWorker.register('sw.js')
+    .then(function(registartion){
+      console.log('支持sw:',registartion.scope)
+    })
+  }
+</script>
     <div id="messageBox" class="sendmessage">
          <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1>
          <div class="niokbutton" onclick="okbuttonsend()"></div>
