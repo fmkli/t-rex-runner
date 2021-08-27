@@ -1,0 +1,12 @@
+{
+    "name": "Fmkli的网站",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "https://bu.dusays.com/2021/08/27/c3713c4dd171a.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
